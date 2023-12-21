@@ -1,0 +1,87 @@
+---
+import Button from '@components/ui/Button.astro';
+import ToggleTheme from '@components/ui/ToggleTheme.astro';
+import { Astronav, MenuIcon, MenuItems } from 'astro-navbar';
+
+let downloadUrl = '/path/to/your/file.pdf';
+
+
+const menuitems = [
+	{
+		title: 'About',
+		path: '#about',
+	},
+	{
+		title: 'Projects',
+		path: '#projects',
+	},
+	{
+		title: 'Contact',
+		path: '#contact',
+	},
+];
+
+const handleDownload = () => {
+
+};
+
+---
+
+<script>
+
+	/** Grab the toggle */
+	const toggle = document.querySelector("button");
+	/** Grab the document root element. In this case <html>  */
+	const rootEl = document.documentElement;
+
+	if (toggle) {
+		toggle.addEventListener("click", () => {
+			let downloadUrl = './src/assets/pdf/resume.pdf';
+			/** toggle the "dark" class on the root element */
+			fetch(downloadUrl)
+				.then(response => response.blob())
+				.then(blob => {
+					const a = document.createElement('a');
+					const url = window.URL.createObjectURL(blob);
+					a.href = url;
+					a.download = 'bhargav_patel_resume.pdf';
+					document.body.appendChild(a);
+					a.click();
+					document.body.removeChild(a);
+					window.URL.revokeObjectURL(url);
+				})
+				.catch(error => console.error('Error downloading file:', error));
+		});
+	}
+</script>
+
+<header data-testId="header" class="my-5 flex flex-col items-center justify-between lg:flex-row">
+	<Astronav>
+		<div class="flex w-full items-center justify-between lg:w-auto">
+			<Button size={'sm'} name="Download CV">Download CV</Button>
+			<div class="block lg:hidden">
+				<MenuIcon class="h-4 w-4 text-black dark:text-white" />
+			</div>
+		</div>
+		<MenuItems class="mt-2 hidden w-full lg:mt-0 lg:flex lg:w-auto">
+			<ul class="flex flex-col lg:flex-row lg:gap-3">
+				{
+					menuitems.map((item) => (
+						<>
+							<li>
+								<a
+									aria-label="navigation link"
+									href={item.path}
+									class="flex py-2 text-black hover:text-orange dark:text-white dark:hover:text-orange lg:px-3"
+								>
+									{item.title}
+								</a>
+							</li>
+						</>
+					))
+				}
+				<li><ToggleTheme /></li>
+			</ul>
+		</MenuItems>
+	</Astronav>
+</header>

@@ -5,5 +5,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://ibhargav90.github.io',
+	base: '/Resume',
 	integrations: [tailwind(), mdx(), image()],
 });

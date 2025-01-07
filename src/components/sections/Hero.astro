@@ -8,10 +8,10 @@ interface Props {
   gradientColor?: string;
 }
 
-const { 
+const {
   title = "Hi, I'm Bhargav Patel",
-  subtitle = "Senior Software Engineer specializing in building exceptional web applications with modern technologies.",
-  gradientColor = 'from-black/80 via-black/50 to-transparent' 
+  subtitle = 'Senior Software Engineer specializing in building exceptional web applications with modern technologies.',
+  gradientColor = 'from-black/80 via-black/50 to-transparent',
 } = Astro.props;
 ---
 
@@ -22,15 +22,12 @@ const {
       <Image
         src={heroImage}
         alt="Background"
-        class="w-[80%] md:w-[50%] lg:w-[40%] h-[95vh] object-contain object-center md:object-right translate-x-[5%] md:translate-x-0"
+        class="hidden md:block w-[80%] md:w-[50%] lg:w-[40%] h-[95vh] object-contain object-center md:object-right translate-x-[5%] md:translate-x-0"
         loading="eager"
         quality={100}
       />
       <!-- Gradient Overlay -->
-      <div class:list={[
-        'absolute inset-0 bg-gradient-to-r',
-        gradientColor
-      ]}></div>
+      <div class:list={['absolute inset-0 bg-gradient-to-r', gradientColor]}></div>
     </div>
   </div>
 
@@ -45,14 +42,14 @@ const {
           {subtitle}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors text-center"
           >
             Get in Touch
           </a>
-          <a 
-            href="#experience" 
+          <a
+            href="#experience"
             class="border border-white/20 text-white px-6 py-3 rounded-lg hover:border-white/40 transition-colors text-center"
           >
             View Experience
@@ -82,7 +79,9 @@ const {
     }
   }
 
-  h1, p, div {
+  h1,
+  p,
+  div {
     animation: fade-in linear both;
     animation-timeline: --hero;
     animation-range: entry 20% cover 30%;

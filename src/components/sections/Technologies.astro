@@ -1,0 +1,47 @@
+---
+const technologies = [
+  'JavaScript (ES6+)',
+  'TypeScript',
+  'Angular',
+  'React',
+  'Node.js',
+  'Express.js',
+  'AngularJS',
+  'MongoDB',
+  'PostgreSQL',
+  'HTML5/CSS3',
+];
+---
+
+<section class="py-16 bg-white dark:bg-dark-background">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-12 text-gray-900 dark:text-white">Technologies I Work With</h2>
+
+    <div class="flex flex-wrap gap-3">
+      {
+        technologies.map(tech => (
+          <div class="group">
+            <div class="tech-tag px-4 py-2 bg-gray-100 dark:bg-gray-700/50 rounded-full border border-gray-200 dark:border-gray-500 transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-600/50">
+              <span class="text-gray-800 dark:text-gray-50 text-sm font-medium">{tech}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-tag {
+    position: relative;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+  }
+
+  .group:hover .tech-tag {
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+</style>

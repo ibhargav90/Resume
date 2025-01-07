@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Header from '../components/shared/Header.astro';
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ const { title, description = 'Bhargav Patel' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -22,9 +23,43 @@ const { title, description = 'Bhargav Patel' } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="/Resume/favicon.ico" />
   </head>
   <body>
-    <slot />
+    <Header />
+    <main class="pt-16">
+      <slot />
+    </main>
   </body>
 </html>
+
+<script>
+  // Initialize theme
+  const theme = (() => {
+    // First check localStorage
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    // Default to dark theme
+    return 'dark';
+  })();
+
+  // Apply theme class
+  document.documentElement.className = theme;
+
+  // Store theme
+  localStorage.setItem('theme', theme);
+
+  // Handle theme toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleTheme = () => {
+      const currentTheme = document.documentElement.className;
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      document.documentElement.className = newTheme;
+      localStorage.setItem('theme', newTheme);
+    };
+
+    // Attach event listener to theme toggle button
+    document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+  });
+</script>

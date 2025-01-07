@@ -11,7 +11,7 @@ interface Props {
 const {
   title = "Hi, I'm Bhargav Patel",
   subtitle = 'Senior Software Engineer specializing in building exceptional web applications with modern technologies.',
-  gradientColor = 'from-black/80 via-black/50 to-transparent',
+  gradientColor = '',
 } = Astro.props;
 ---
 
@@ -27,7 +27,14 @@ const {
         quality={100}
       />
       <!-- Gradient Overlay -->
-      <div class:list={['absolute inset-0 bg-gradient-to-r', gradientColor]}></div>
+      <div
+        class:list={[
+          'absolute inset-0 bg-gradient-to-r',
+          'from-orange-50/80 via-orange-50/40 to-transparent',
+          'dark:from-gray-900 dark:via-gray-900/90 dark:to-transparent',
+        ]}
+      >
+      </div>
     </div>
   </div>
 
@@ -35,22 +42,30 @@ const {
   <div class="relative z-10 container mx-auto px-4 h-full">
     <div class="flex flex-col justify-center h-full pt-16 md:pt-0">
       <div class="max-w-xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          {title}
-        </h1>
-        <p class="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8">
-          {subtitle}
-        </p>
+        <div
+          class="h-[4.5rem] md:h-[5rem] lg:h-[6rem] mb-6 bg-orange-50/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-lg px-4 py-2"
+        >
+          <h1
+            class="typewriter text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white"
+          >
+            {title}
+          </h1>
+        </div>
+        <div class="bg-orange-50/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-lg px-4 py-3 mb-8">
+          <p class="text-lg md:text-xl lg:text-2xl text-gray-800 dark:text-gray-100">
+            {subtitle}
+          </p>
+        </div>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
             href="#contact"
-            class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors text-center"
+            class="px-6 py-3 rounded-lg transition-all bg-primary text-white hover:bg-primary/90 hover:scale-105 border border-transparent"
           >
             Get in Touch
           </a>
           <a
             href="#experience"
-            class="border border-white/20 text-white px-6 py-3 rounded-lg hover:border-white/40 transition-colors text-center"
+            class="px-6 py-3 rounded-lg transition-all border border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary text-gray-900 dark:text-white hover:scale-105 bg-orange-50/50 dark:bg-gray-800/50 backdrop-blur-sm"
           >
             View Experience
           </a>
@@ -61,29 +76,34 @@ const {
 </section>
 
 <style>
-  section {
-    view-timeline-name: --hero;
-    view-timeline-axis: block;
-    animation-timeline: --hero;
-    animation-range: entry 50% cover 50%;
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid;
+    animation:
+      typing 3s steps(40, end),
+      blink-caret 0.75s step-end infinite;
+    width: fit-content;
+    line-height: 1.2;
+    padding-bottom: 0.2em;
   }
 
-  @keyframes fade-in {
+  @keyframes typing {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+      width: 0;
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+      width: 100%;
     }
   }
 
-  h1,
-  p,
-  div {
-    animation: fade-in linear both;
-    animation-timeline: --hero;
-    animation-range: entry 20% cover 30%;
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
   }
 </style>

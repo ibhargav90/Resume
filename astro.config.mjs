@@ -1,8 +1,12 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import mdx from '@astrojs/mdx';
+import awsAmplify from 'astro-aws-amplify';
+
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://ibhargav90.github.io',
-  base: '/Resume',
+  site: 'https://ibhargav.com',
+  integrations: [mdx(), sitemap()],
+  adapter: awsAmplify(),
+  output: 'server',
 });

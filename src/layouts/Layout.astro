@@ -6,10 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { 
-  title,
-  description = "Bhargav Patel"
-} = Astro.props;
+const { title, description = 'Bhargav Patel' } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,12 +15,14 @@ const {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Resume/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <base href="https://www.ibhargav.com/">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/Resume/favicon.ico" />
   </head>
   <body>
     <slot />

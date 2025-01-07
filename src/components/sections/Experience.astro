@@ -1,0 +1,87 @@
+---
+const experiences = [
+  {
+    title: "Senior UI Developer",
+    company: "Luxoft",
+    companyUrl: "https://www.luxoft.com/",
+    period: "August 2021 – Present",
+    project: "Capital Group Bank Application – Asset Information for Investment Banking",
+    achievements: [
+      "Spearheaded the development of scalable UI modules for visualizing historical asset data and facilitating in-depth financial analysis, reducing initial load time by 25%.",
+      "Architected efficient application flows, prioritized critical feature development, and ensured timely and seamless releases.",
+      "Delivered technical and administrative support to analyze, troubleshoot, and resolve complex issues, enhancing platform reliability by over 30%.",
+    ],
+    technologies: ["Angular", "TypeScript", "NgRx", "Angular Material", "PrimeNG"]
+  },
+  {
+    title: "Lead UI Developer",
+    company: "Zymr Systems",
+    companyUrl: "https://www.zymr.com/",
+    period: "October 2017 – August 2021",
+    project: "Security CMS for Virsec Systems (USA) – Real-Time Application Security",
+    achievements: [
+      "Directed a team of four engineers to develop a customizable, full-stack security solution supporting dynamic dashboards, logs, and analytics, improving system response times by 20%.",
+      "Engineered reusable Angular components and design patterns for responsive, user-friendly interfaces.",
+      "Integrated third-party APIs, including Splunk and Zendesk, boosting customer support efficiency.",
+      "Played a pivotal role in securing the \"Best Interactive UI\" award at RSA Conference 2018.",
+    ],
+    technologies: ["Angular 15", "TypeScript", "WebSocket (stomp)", "Kafka", "Zuul", "MongoDB"]
+  },
+  {
+    title: "Senior Frontend Developer",
+    company: "Zymr Systems",
+    companyUrl: "https://www.zymr.com/",
+    period: "March 2014 – October 2017",
+    project: "Cloud-Based WAN Optimization Solution",
+    achievements: [
+      "Developed a robust dashboard framework enabling users to configure and save personalized widgets, enhancing user customization by 40%.",
+      "Designed reusable components for data visualization, charts, and custom configurations, leading to a 30% reduction in development time for new modules.",
+      "Implemented comprehensive unit testing strategies and optimized performance for large-scale SDN solutions.",
+    ],
+    technologies: ["Backbone", "Polymer", "TypeScript", "JSPM", "SystemJS", "J2EE", "PostgreSQL"]
+  }
+];
+---
+
+<section id="experience" class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12">Experience</h2>
+    
+    <div class="space-y-12">
+      {experiences.map((exp) => (
+        <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md">
+          <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+            <div>
+              <h3 class="text-xl font-bold">{exp.title}</h3>
+              <a 
+                href={exp.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary font-medium hover:underline"
+              >
+                {exp.company}
+              </a>
+            </div>
+            <span class="text-gray-600 dark:text-gray-400">{exp.period}</span>
+          </div>
+          
+          <p class="text-gray-700 dark:text-gray-300 font-medium mb-4">{exp.project}</p>
+          
+          <ul class="list-disc list-inside space-y-2 mb-6">
+            {exp.achievements.map((achievement) => (
+              <li class="text-gray-600 dark:text-gray-400">{achievement}</li>
+            ))}
+          </ul>
+          
+          <div class="flex flex-wrap gap-2">
+            {exp.technologies.map((tech) => (
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

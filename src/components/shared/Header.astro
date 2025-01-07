@@ -1,0 +1,86 @@
+---
+const navItems = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">
+  <div class="container py-4">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-primary">BP</a>
+      
+      <ul class="hidden md:flex items-center gap-8">
+        {navItems.map(({ href, label }) => (
+          <li>
+            <a 
+              href={href}
+              class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <button 
+        class="md:hidden p-2"
+        aria-label="Toggle menu"
+        id="menu-toggle"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div 
+  class="fixed inset-0 bg-white dark:bg-gray-900 z-40 transform translate-x-full transition-transform duration-300"
+  id="mobile-menu"
+>
+  <div class="container py-4">
+    <button 
+      class="p-2 absolute top-4 right-4"
+      aria-label="Close menu"
+      id="close-menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <ul class="flex flex-col items-center gap-8 mt-16">
+      {navItems.map(({ href, label }) => (
+        <li>
+          <a 
+            href={href}
+            class="text-xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const closeMenu = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
+
+  const toggleMenu = () => {
+    mobileMenu?.classList.toggle('translate-x-full');
+  };
+
+  menuToggle?.addEventListener('click', toggleMenu);
+  closeMenu?.addEventListener('click', toggleMenu);
+  mobileMenuLinks?.forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  });
+</script>

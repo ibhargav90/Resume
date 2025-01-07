@@ -1,0 +1,69 @@
+---
+const projects = [
+  {
+    title: "Security CMS Dashboard",
+    description: "Award-winning security monitoring dashboard with real-time threat detection and analytics. Features customizable widgets, log analysis, and integration with Splunk and Zendesk.",
+    highlights: [
+      "Real-time security monitoring",
+      "Customizable dashboard widgets",
+      "Third-party API integrations",
+      "Performance optimization"
+    ],
+    technologies: ["Angular", "TypeScript", "WebSocket", "Kafka"]
+  },
+  {
+    title: "Asset Management Platform",
+    description: "Financial asset visualization platform for investment banking, featuring historical data analysis and performance metrics tracking.",
+    highlights: [
+      "Interactive data visualization",
+      "Real-time performance tracking",
+      "Optimized load times",
+      "Scalable architecture"
+    ],
+    technologies: ["Angular", "NgRx", "PrimeNG", "TypeScript"]
+  },
+  {
+    title: "WAN Optimization Solution",
+    description: "Cloud-based network optimization platform with configurable dashboards and real-time network analytics.",
+    highlights: [
+      "Custom widget framework",
+      "Network performance monitoring",
+      "Data visualization",
+      "Automated testing suite"
+    ],
+    technologies: ["Backbone.js", "Polymer", "TypeScript", "PostgreSQL"]
+  }
+];
+---
+
+<section id="projects" class="py-20">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12">Featured Projects</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">{project.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+            
+            <h4 class="font-semibold mb-2">Key Features:</h4>
+            <ul class="list-disc list-inside mb-4 text-gray-600 dark:text-gray-400">
+              {project.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+            
+            <div class="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
